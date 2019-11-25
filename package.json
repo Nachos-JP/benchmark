@@ -1,0 +1,22 @@
+{
+  "name": "benchmark",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --experimental-modules index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nachos-JP/benchmark.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Nachos-JP/benchmark/issues"
+  },
+  "homepage": "https://github.com/Nachos-JP/benchmark#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
