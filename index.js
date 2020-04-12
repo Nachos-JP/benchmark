@@ -48,6 +48,21 @@ app.post("/sphere", (request, response) => {
   }
 });
 
+app.post("/eggholder", (request, response) => {
+  console.log("Received request to /eggholder");
+
+  try {
+    const x1 = parseFloat(request.body.ind[0]);
+    const x2 = parseFloat(request.body.ind[1]);
+    const cal1 = -(x2+47)*Math.sin(Math.sqrt(Math.abs(x2+(x1/2)+47)));
+    const cal2 = -x1*Math.sin(Math.sqrt(Math.abs(x1-(x2+47))));
+    response.json({res: -(cal1+cal2)});
+  }
+  catch(e){
+    response.json({res: -1e10});
+  }
+});
+
 app.listen(app.get("port"), () => {
   console.log(`Running at :${app.get("port")}`);
 });
