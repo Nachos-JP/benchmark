@@ -16,7 +16,8 @@ app.use(bodyParser.json());
 app.set("port", 5000);
 
 app.get("/", (request, response) => {
-  response.json("Running benchmark");
+  console.log("Receive request to /");
+  response.json(true);
 });
 
 app.post("/easom", async (request, response) => {
