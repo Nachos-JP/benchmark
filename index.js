@@ -21,12 +21,18 @@ app.get("/", (request, response) => {
 });
 
 app.post("/easom", async (request, response) => {
-  const x = request.body;
-  const a = Math.cos(x[0]);
-  const b = Math.cos(x[1]);
-  const c = Math.exp(-((x[0]-Math.PI)**2 + (x[1]-Math.PI)**2));
-  await sleep(0.5);
-  response.json(a * b * c);
+  console.log("Receive request to /easom");
+
+  try {
+    const x = request.body.ind;
+    const a = Math.cos(x[0]);
+    const b = Math.cos(x[1]);
+    const c = Math.exp(-((x[0]-Math.PI)**2 + (x[1]-Math.PI)**2));
+    response.json({res: a * b * c});
+  }
+  catch(e){
+    response.json({res: -1});
+  }
 });
 
 app.listen(app.get("port"), () => {
