@@ -48,6 +48,22 @@ app.post("/sphere", (request, response) => {
   }
 });
 
+app.post("/levi", (request, response) => {
+  console.log("Received request to /levi");
+
+  try {
+    const x1 = parseFloat(request.body.ind[0]);
+    const x2 = parseFloat(request.body.ind[1]);
+    const cal1 = Math.sin(3*Math.PI*x1)**2;
+    const cal2 = ((x1-1)**2)*(1+Math.sin(3*Math.PI*x2)**2);
+    const cal3 = ((x2-1)**2)*(1+Math.sin(2*Math.PI*x2)**2);
+    response.json({res: -(cal1+cal2+cal3)});
+  }
+  catch(e){
+    response.json({res: -1e10});
+  }
+});
+
 app.post("/eggholder", (request, response) => {
   console.log("Received request to /eggholder");
 
