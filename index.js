@@ -20,8 +20,8 @@ app.get("/", (request, response) => {
   response.json(true);
 });
 
-app.post("/easom", async (request, response) => {
-  console.log("Receive request to /easom");
+app.post("/easom", (request, response) => {
+  console.log("Received request to /easom");
 
   try {
     const x = request.body.ind;
@@ -31,7 +31,20 @@ app.post("/easom", async (request, response) => {
     response.json({res: a * b * c});
   }
   catch(e){
-    response.json({res: -1});
+    response.json({res: -1e10});
+  }
+});
+
+app.post("/sphere", (request, response) => {
+  console.log("Received request to /sphere");
+
+  try {
+    const x = request.body.ind;
+    const sum = x.reduce((acc,cur)=>acc+cur**2, 0);
+    response.json({res: -sum});
+  }
+  catch(e){
+    response.json({res: -1e10});
   }
 });
 
